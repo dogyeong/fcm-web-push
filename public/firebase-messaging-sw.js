@@ -1,22 +1,25 @@
-importScripts('https://www.gstatic.com/firebasejs/9.6.8/firebase-app-compat.js')
-importScripts('https://www.gstatic.com/firebasejs/9.6.8/firebase-messaging-compat.js')
+import {ZumWebPush} from '@zum-front-core/web-push'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBmRsOdgQekomDaTdxqBqwcvylDCwaUJTU",
-  authDomain: "fcm-test-b5211.firebaseapp.com",
-  projectId: "fcm-test-b5211",
-  storageBucket: "fcm-test-b5211.appspot.com",
-  messagingSenderId: "518072534048",
-  appId: "1:518072534048:web:1a1b3c72b7392fde1f2845",
-  measurementId: "G-5LTHB5G95C"
+  apiKey: "AIzaSyBqO9upyfr-lN6m7AoEqube8oVRRzeRAjE",
+  authDomain: "web-push-q-7e95a.firebaseapp.com",
+  projectId: "web-push-q-7e95a",
+  storageBucket: "web-push-q-7e95a.appspot.com",
+  messagingSenderId: "246405786805",
+  appId: "1:246405786805:web:6e37a76b83dbfafab162fc",
+  measurementId: "G-7TF7ZN7Q1B"
 };
 
-firebase.initializeApp(firebaseConfig);
+const onBackgroundMessageHandler = (payload) => {
+  console.log(payload)
+  const {title, body} = payload.notification;
+  const notificationTitle = title;
+  const notificationOptions = {
+    body,
+  };
 
-const messaging = firebase.messaging();
-
-messaging.setBackgroundMessageHandler = (payload) => {
-  // console.log(payload)
-  // self.registration.showNotification('title!', { body: 'BODY!' });
-  new Notification(payload.notification.title)
+  self.registration?.showNotification(notificationTitle,
+    notificationOptions);
 }
+
+ZumWebPush.onBackgroundMessage({firebaseConfig})
