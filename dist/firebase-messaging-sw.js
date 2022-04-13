@@ -6480,21 +6480,14 @@
     registerMessagingInSw();
 
     const defaultForegroundMessageHandler = (payload) => {
-        if (!{}.hasOwnProperty.call(self, 'Notification'))
+        var _a;
+        if (!{}.hasOwnProperty.call(window, 'Notification'))
             return;
         if (Notification.permission !== 'granted')
             return;
-        new Notification(payload.notification?.title || '');
+        new Notification(((_a = payload.notification) === null || _a === void 0 ? void 0 : _a.title) || '');
     };
-    const defaultBackgroundMessageHandler = (payload) => {
-        if (!payload.notification)
-            return;
-        const { title = '', body } = payload.notification;
-        const notificationOptions = {
-            body,
-        };
-        self.registration.showNotification(title, notificationOptions);
-    };
+    const defaultBackgroundMessageHandler = () => { };
     const onForegroundMessage = (options) => {
         const { firebaseConfig, vapidKey, onMessageHandler, onPermissionDenied, onPermissionError, onPermissionGranted, } = options;
         const firebaseApp = initializeApp(firebaseConfig);
@@ -6503,10 +6496,11 @@
         getToken(messaging, { vapidKey })
             .then((currentToken) => {
             if (!currentToken) {
-                onPermissionDenied?.();
+                onPermissionDenied === null || onPermissionDenied === void 0 ? void 0 : onPermissionDenied();
                 return;
             }
-            onPermissionGranted?.(currentToken);
+            onPermissionGranted === null || onPermissionGranted === void 0 ? void 0 : onPermissionGranted(currentToken);
+            return fetch(`https://push-api.zum.com/users/test/tokens?projectName=zum-app&appType=web&token=${currentToken}`, { method: 'POST' });
         })
             .catch(onPermissionError);
         onMessage(messaging, onMessageHandler || defaultForegroundMessageHandler);
@@ -6515,22 +6509,22 @@
         const { firebaseConfig, onBackgroundMessageHandler } = options;
         const firebaseApp = initializeApp(firebaseConfig);
         const messaging = getMessagingInSw(firebaseApp);
-        getAnalytics(firebaseApp);
         onBackgroundMessage$2(messaging, onBackgroundMessageHandler || defaultBackgroundMessageHandler);
     };
     const ZumWebPush = {
         onForegroundMessage,
-        onBackgroundMessage
+        onBackgroundMessage,
     };
 
     const firebaseConfig = {
-      apiKey: "AIzaSyBqO9upyfr-lN6m7AoEqube8oVRRzeRAjE",
-      authDomain: "web-push-q-7e95a.firebaseapp.com",
-      projectId: "web-push-q-7e95a",
-      storageBucket: "web-push-q-7e95a.appspot.com",
-      messagingSenderId: "246405786805",
-      appId: "1:246405786805:web:6e37a76b83dbfafab162fc",
-      measurementId: "G-7TF7ZN7Q1B"
+      apiKey: "AIzaSyBzkR_2nqrTsqKIg7Hp0nXhlw_jNV2fXk8",
+      authDomain: "zum-app-d6b3d.firebaseapp.com",
+      databaseURL: "https://zum-app-d6b3d.firebaseio.com",
+      projectId: "zum-app-d6b3d",
+      storageBucket: "zum-app-d6b3d.appspot.com",
+      messagingSenderId: "1054822071827",
+      appId: "1:1054822071827:web:ee64270513e07488ac09e6",
+      measurementId: "G-7FJYR6590G"
     };
 
     ZumWebPush.onBackgroundMessage({firebaseConfig});

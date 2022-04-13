@@ -8,7 +8,7 @@
     "start": "yarn build && firebase deploy"
   },
   "dependencies": {
-    "@zum-front-core/web-push": "^0.0.10",
+    "@zum-front-core/web-push": "^0.0.21",
     "firebase": "^9.6.10"
   },
   "devDependencies": {
