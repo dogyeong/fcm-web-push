@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && mkdir dist && cp public/index.html dist/index.html && rollup -c rollup.config.js",
+    "build": "rimraf dist && mkdir dist && rollup -c rollup.config.js",
     "start": "yarn build && firebase deploy"
   },
   "dependencies": {
-    "@zum-front-core/web-push": "^0.0.21",
+    "@zum-front-core/web-push": "^0.0.23",
     "firebase": "^9.6.10"
   },
   "devDependencies": {
