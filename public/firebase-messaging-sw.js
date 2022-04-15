@@ -22,6 +22,4 @@ const onBackgroundMessageHandler = (payload) => {
   self.registration?.showNotification(notificationTitle, notificationOptions);
 };
 
-ZumWebPush.overrideOnClickNotification();
-
 ZumWebPush.onBackgroundMessage({ firebaseConfig });

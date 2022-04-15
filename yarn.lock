@@ -481,10 +481,10 @@
   dependencies:
     "@types/node" "*"
 
-"@zum-front-core/web-push@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@zum-front-core/web-push/-/web-push-0.0.23.tgz#e0a0dbb748db2ba7fcda7e2c0e34059cd31dc7d5"
-  integrity sha512-PNcikU6WSQusj46urzvFRiaarHVLGoLGLUkZaJSnwSEsfOid++ZNOiZFeWee1C1b7V00+df839mLs2jY9RUYsQ==
+"@zum-front-core/web-push@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@zum-front-core/web-push/-/web-push-0.0.25.tgz#3a30ac63c63fcdb69bde700e3a12b275189aa43c"
+  integrity sha512-3q00qIwS3QS1IKPYLBC7zdGmI88TsMJVFeWOgF+r53tBp73HisALNiCYQzJGvzKsD3juMhfpSOVnfOJE/ctD7Q==
   dependencies:
     firebase "^9.6.10"
 
