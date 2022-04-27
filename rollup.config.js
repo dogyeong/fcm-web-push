@@ -1,4 +1,6 @@
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 
 export default [
   {
@@ -7,7 +9,7 @@ export default [
       file: './dist/index.js',
       format: 'umd',
     },
-    plugins: [nodeResolve()]
+    plugins: [nodeResolve({preferBuiltins: true, browser: true}), json(), commonjs(), ]
   },
   {
     input: './public/firebase-messaging-sw.js',
@@ -15,6 +17,6 @@ export default [
       file: './dist/firebase-messaging-sw.js',
       format: 'umd',
     },
-    plugins: [nodeResolve()]
+    plugins: [nodeResolve({preferBuiltins: true, browser: true}), json(), commonjs(), ]
   },
 ];

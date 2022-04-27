@@ -13,6 +13,8 @@ const firebaseConfig = {
 
 const vapidKey = 'BFvqxAtemDbyY2R-PqfgjV-GTavbsZojGR2z5GERMog_twbXN5lWKpZXXlHvWbTFbOo2jMYmmb1zARLwI7sE6Z8';
 
+// const userId = 'frontend-test'
+
 const onPermissionGranted = (token) => {
   console.log(token);
 };

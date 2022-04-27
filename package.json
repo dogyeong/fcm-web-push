@@ -8,10 +8,12 @@
     "start": "yarn build && firebase deploy"
   },
   "dependencies": {
-    "@zum-front-core/web-push": "^0.0.25",
+    "@zum-front-core/web-push": "^0.0.33",
     "firebase": "^9.6.10"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1"
